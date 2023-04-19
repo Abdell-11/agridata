@@ -14,6 +14,7 @@ import Pin from './pin';
 
 import CITIES from '../assets/cities.json';
 
+
 const TOKEN = 'pk.eyJ1IjoibW91cmFiaXRpeml5YWQiLCJhIjoiY2xnbGZkNXR3MDB0MDNkdWd1YTBueTFydiJ9.QqADo0TtRSPzzJgupGcpyA'; // Set your mapbox token here
 
 const TestMap = () => {
@@ -40,13 +41,13 @@ const TestMap = () => {
     []
   );
 
-  const geojson = {
-    type: 'FeatureCollection',
-    features: [
-      { type: 'Feature', geometry: { type: 'Point', coordinates: [-5.105036, 33.544402] } },
-      { type: 'Feature', geometry: { type: 'Point', coordinates: [-5.110036, 33.538402] } },
-    ]
-  };
+  // const geojson = {
+  //   type: 'FeatureCollection',
+  //   features: [
+  //     { type: 'Feature', geometry: { type: 'Point', coordinates: [-5.105036, 33.544402] } },
+  //     { type: 'Feature', geometry: { type: 'Point', coordinates: [-5.110036, 33.538402] } },
+  //   ]
+  // };
 
   return (
     <Map
@@ -54,8 +55,8 @@ const TestMap = () => {
       mapStyle={"mapbox://styles/mourabitiziyad/ck7yovgch176o1ioj63okiw14"}
       mapboxAccessToken={TOKEN}
       initialViewState={{
-        longitude: -5.105036,
-        latitude: 33.539402,
+        latitude: 33.543640,
+        longitude: -5.109508,
         zoom: 16
       }}
       style={{ width: '100%', height: '100vh' }}
