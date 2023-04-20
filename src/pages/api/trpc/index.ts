@@ -1,8 +1,5 @@
-import type { NextApiRequest, NextApiResponse } from 'next'
-
-
+import type { NextApiRequest, NextApiResponse } from "next";
 
 export default function (req: NextApiRequest, res: NextApiResponse) {
-
-  res.send('Hello World')
+  res.send("Hello World");
 }

@@ -3,9 +3,6 @@ import { z } from "zod";
 import { createTRPCRouter, publicProcedure } from "~/server/api/trpc";
 import { sensordata } from "@prisma/client";
 
-
-
-
 export const sensorRouter = createTRPCRouter({
   getLatestDataByNode: publicProcedure.input(z.number().optional()).mutation(
     async ({ ctx, input }) =>

@@ -7,7 +7,7 @@ import { sensorRouter as sensorData } from "~/server/api/routers/sensors";
  * All routers added in /api/routers should be manually added here.
  */
 export const appRouter = createTRPCRouter({
-  sensorData
+  sensorData,
 });
 
 // export type definition of API

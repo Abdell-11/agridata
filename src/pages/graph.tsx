@@ -1,6 +1,6 @@
-import SensorDataGraph from '../Components/Graph';
-import { useRouter } from 'next/router';
-import { api } from '~/utils/api';
+import SensorDataGraph from "../Components/Graph";
+import { useRouter } from "next/router";
+import { api } from "~/utils/api";
 
 const SensorDataPage = ({ initialData }) => {
   const router = useRouter();
@@ -16,9 +16,9 @@ const SensorDataPage = ({ initialData }) => {
 
 SensorDataPage.getInitialProps = async ({ query }) => {
   const { dataName } = query;
-  const res = await api.query('sensorData.graphData', {});
+  const res = await api.query("sensorData.graphData", {});
 
-  if (res.status === 'success' && res.data && dataName && res.data[dataName]) {
+  if (res.status === "success" && res.data && dataName && res.data[dataName]) {
     return { initialData: res.data[dataName] };
   } else {
     return { initialData: [] };

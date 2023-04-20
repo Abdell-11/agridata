@@ -24,14 +24,19 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="flex min-h-screen">
-      <Sidebar />
-      <main className="w-full p-12 bg-gradient-to-b from-[#2e026d] to-[#15162c]">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <Sidebar />
+        <main className="w-full bg-gradient-to-b from-[#2e026d] to-[#15162c] p-12">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
             {Object.keys(sensors.data).map((column) => (
-              <Card key={column} href={`/graph?dataName=${column}`} DataName={column} DataPoint={sensors.data[column as keyof typeof column]} />
-              ))}
+              <Card
+                key={column}
+                href={`/graph?dataName=${column}`}
+                DataName={column}
+                DataPoint={sensors.data[column as keyof typeof column]}
+              />
+            ))}
           </div>
-      </main >
+        </main>
       </div>
     </>
   );

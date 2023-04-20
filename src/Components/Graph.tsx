@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react';
-import { Line, ChartData } from 'react-chartjs-2';
-import { useRouter } from 'next/router';
-import { api } from '~/utils/api';
+import { useEffect, useState } from "react";
+import { Line, ChartData } from "react-chartjs-2";
+import { useRouter } from "next/router";
+import { api } from "~/utils/api";
 
 type DataPoint = {
   value: number;
@@ -19,7 +19,9 @@ const SensorDataGraph = ({ dataName, initialData }: SensorDataGraphProps) => {
   useEffect(() => {
     if (initialData && dataName) {
       const latestData = initialData.slice(-20);
-      const labels = latestData.map((point: DataPoint) => new Date(point.createdat).toLocaleDateString());
+      const labels = latestData.map((point: DataPoint) =>
+        new Date(point.createdat).toLocaleDateString()
+      );
       const dataPoints = latestData.map((point: DataPoint) => point.value);
 
       setChartData({
@@ -29,7 +31,7 @@ const SensorDataGraph = ({ dataName, initialData }: SensorDataGraphProps) => {
             label: dataName,
             data: dataPoints,
             fill: false,
-            borderColor: 'rgb(75, 192, 192)',
+            borderColor: "rgb(75, 192, 192)",
             tension: 0.1,
           },
         ],
@@ -48,14 +50,14 @@ const SensorDataGraph = ({ dataName, initialData }: SensorDataGraphProps) => {
                 display: true,
                 title: {
                   display: true,
-                  text: 'Date',
+                  text: "Date",
                 },
               },
               y: {
                 display: true,
                 title: {
                   display: true,
-                  text: 'Value',
+                  text: "Value",
                 },
               },
             },
