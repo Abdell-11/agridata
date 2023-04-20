@@ -33,13 +33,21 @@ const prisma = new PrismaClient({
         min: 0,
         max: 100,
         precision: 0.01,
-      }), 
-      createdat: faker.date.past(),  
-      longitude : faker.datatype.number({ min: -5.108590, max: -5.107518, precision: 0.0001 }),
-      latitude : faker.datatype.number({ min: 33.542854, max:  33.543752, precision: 0.0001 }),
+      }),
+      createdat: faker.date.past(),
+      longitude: faker.datatype.number({
+        min: -5.10859,
+        max: -5.107518,
+        precision: 0.0001,
+      }),
+      latitude: faker.datatype.number({
+        min: 33.542854,
+        max: 33.543752,
+        precision: 0.0001,
+      }),
     })),
   });
   console.log(data);
 })().finally(() => {
-    console.log("Closing prisma connection");
+  console.log("Closing prisma connection");
 });

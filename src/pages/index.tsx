@@ -2,12 +2,20 @@ import { type NextPage } from "next";
 import Head from "next/head";
 import { Card } from "~/Components/Card";
 import Sidebar from "~/Components/Sidemenu";
-
+import { sensordata } from "@prisma/client";
 import { api } from "~/utils/api";
+import { useState } from "react";
+import SensorDataGraph from "../Components/Graph";
 
+//TO implement modal
+
+const Datamodel = () => (
+  <div>
+  </div>  
+)
 const Home: NextPage = () => {
   const { data: sensors, isLoading, error } = api.sensorData.getData.useQuery();
-
+  const [dataModel, setDataModel] = useState<sensordata | undefined>();
   if (isLoading) {
     return <div>Loading...</div>;
   }
@@ -24,14 +32,23 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="flex min-h-screen">
-      <Sidebar />
-      <main className="w-full p-12 bg-gradient-to-b from-[#2e026d] to-[#15162c]">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            {Object.keys(sensors.data).map((column) => (
-              <Card key={column} href={`/graph?dataName=${column}`} DataName={column} DataPoint={sensors.data[column as keyof typeof column]} />
-              ))}
+        {
+            dataModel && <Datamodel/>
+        }
+        <Sidebar />
+        <main className="w-full bg-gradient-to-b from-[#2e026d] to-[#15162c] p-12">
+          
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+            {sensors && Object.keys(sensors.data).map((column , index) => (
+              <Card
+                key={index}
+                href={`/graph?dataName=${column}`}
+                DataName={column}
+                DataPoint={sensors.data[column as keyof typeof column] }
+              />
+            ))}
           </div>
-      </main >
+        </main>
       </div>
     </>
   );
