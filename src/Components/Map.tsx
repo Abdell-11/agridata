@@ -1,6 +1,5 @@
-// @ts-ignore
-import * as React from 'react';
 import { useState, useMemo } from 'react';
+import type { sensorData } from "@prisma/client";
 import Map, {
   Marker,
   Popup,
@@ -9,7 +8,7 @@ import Map, {
   ScaleControl,
   GeolocateControl
 } from 'react-map-gl';
-
+import { api } from "~/utils/api";
 import Pin from './pin';
 
 import CITIES from '../assets/cities.json';
@@ -18,7 +17,9 @@ import CITIES from '../assets/cities.json';
 const TOKEN = 'pk.eyJ1IjoibW91cmFiaXRpeml5YWQiLCJhIjoiY2xnbGZkNXR3MDB0MDNkdWd1YTBueTFydiJ9.QqADo0TtRSPzzJgupGcpyA'; // Set your mapbox token here
 
 const TestMap = () => {
-  const [popupInfo, setPopupInfo] = useState(null);
+  const [popupInfo, setPopupInfo] = useState<sensorData | undefined>();
+  const { data: AllData } = api.sensorData.getLatestDataPerNode.useQuery();
+  const { data: NodeData, mutateAsync: fetchById } = api.sensorData.getLatestDataByNode.useMutation();
 
   const pins = useMemo(
     () =>
@@ -33,6 +34,7 @@ const TestMap = () => {
             // with `closeOnClick: true`
             e.originalEvent.stopPropagation();
             setPopupInfo(city);
+            console.log(index);
           }}
         >
           <Pin />
@@ -40,14 +42,6 @@ const TestMap = () => {
       )),
     []
   );
-
-  // const geojson = {
-  //   type: 'FeatureCollection',
-  //   features: [
-  //     { type: 'Feature', geometry: { type: 'Point', coordinates: [-5.105036, 33.544402] } },
-  //     { type: 'Feature', geometry: { type: 'Point', coordinates: [-5.110036, 33.538402] } },
-  //   ]
-  // };
 
   return (
     <Map
@@ -66,24 +60,72 @@ const TestMap = () => {
       <NavigationControl position="top-left" />
       <ScaleControl />
 
-      {pins}
+      {
+        AllData && AllData.map((sensor, index) => (
+          <Marker
+            key={`marker-${index}`}
+            longitude={sensor.longitude}
+            latitude={sensor.latitude}
+            anchor="bottom"
+            closeOnClick={true}
+            onClick={e => {
+              // If we let the click event propagates to the map, it will immediately close the popup
+              // with `closeOnClick: true`
+              e.originalEvent.stopPropagation();
+
+              setPopupInfo(sensor);
+              console.log(index);
+            }}
+          >
+            <Pin />
+          </Marker>
+        ))
+      }
 
       {popupInfo && (
         <Popup
           anchor="top"
           longitude={Number(popupInfo.longitude)}
           latitude={Number(popupInfo.latitude)}
-          onClose={() => setPopupInfo(null)}
+          onClose={() => setPopupInfo(undefined)}
         >
-          <div>
-            {popupInfo.city}, {popupInfo.state} |{' '}
-            <a
-              target="_new"
-              href={`http://en.wikipedia.org/w/index.php?title=Special:Search&search=${popupInfo.city}, ${popupInfo.state}`}
-            >
-              Wikipedia
-            </a>
-          </div>
+          {
+
+            [
+              {
+                "name": "Node ID",
+                "value": popupInfo.node
+              },
+              {
+                "name": "Temperature",
+                "value": popupInfo.temperature
+              },
+              {
+                "name": "Humidity",
+                "value": popupInfo.humidity
+              },
+              {
+                "name": "Pressure",
+                "value": popupInfo.pressure
+              },
+              {
+                "name": "Soil Moisture",
+                "value": popupInfo.soil
+              },
+              {
+                "name": "Gas",
+                "value": popupInfo.gas
+              } 
+            ]
+            .filter(item => !isNaN(item.value))
+            .map((item, index) => (
+              <p
+                key={index}
+              >
+                {item.name} : {item.value}
+              </p>
+            ))
+          }
           {/* <img width="100%" src={popupInfo.image} /> */}
         </Popup>
       )}
