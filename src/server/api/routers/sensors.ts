@@ -3,6 +3,9 @@ import { z } from "zod";
 import { createTRPCRouter, publicProcedure } from "~/server/api/trpc";
 import { sensordata } from "@prisma/client";
 
+
+
+
 export const sensorRouter = createTRPCRouter({
   getLatestDataByNode: publicProcedure.input(z.number().optional()).mutation(
     async ({ ctx, input }) =>
@@ -34,6 +37,38 @@ export const sensorRouter = createTRPCRouter({
       }
     }
     return Array.from(latestDataPerNode.values());
+  }),
+
+  graphData: publicProcedure.query(async ({ ctx }) => {
+    return ctx.prisma.sensordata
+      .findMany({
+        select: {
+          temperature: true,
+          pressure: true,
+          humidity: true,
+          gas: true,
+          soil: true,
+          createdat: true,
+        },
+        orderBy: {
+          createdat: "desc",
+        },
+      })
+      .then((res) => {
+        const transformedSensorData = { data: {} };
+        Object.keys(res[0])
+          .filter((column) => column !== "createdat")
+          .forEach((column) => {
+            transformedSensorData.data[column] = res.map((data) => ({
+              value: data[column],
+              createdat: data.createdat || "",
+            }));
+          });
+        return transformedSensorData;
+      })
+      .then((res) => {
+        return res;
+      });
   }),
 
   getData: publicProcedure.query(({ ctx }) => {
