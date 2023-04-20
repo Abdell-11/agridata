@@ -37,35 +37,38 @@ export const sensorRouter = createTRPCRouter({
   }),
 
   graphData: publicProcedure.query(async ({ ctx }) => {
-    return ctx.prisma.sensordata
-      .findMany({
-        select: {
-          temperature: true,
-          pressure: true,
-          humidity: true,
-          gas: true,
-          soil: true,
-          createdat: true,
-        },
-        orderBy: {
-          createdat: "desc",
-        },
-      })
-      .then((res) => {
-        const transformedSensorData = { data: {} };
-        Object.keys(res[0])
-          .filter((column) => column !== "createdat")
-          .forEach((column) => {
-            transformedSensorData.data[column] = res.map((data) => ({
-              value: data[column],
-              createdat: data.createdat || "",
-            }));
-          });
-        return transformedSensorData;
-      })
-      .then((res) => {
-        return res;
+    const sensorDataArray = await ctx.prisma.sensordata.findMany({
+      select: {
+        temperature: true,
+        pressure: true,
+        humidity: true,
+        gas: true,
+        soil: true,
+        createdat: true,
+      },
+      orderBy: {
+        createdat: "desc",
+      },
+    });
+    if (!sensorDataArray) {
+      return null;
+    }
+    const transformedSensorData = { data: {} };
+    Object.keys(sensorDataArray[0])
+      .filter((column) => column !== "createdat")
+      .forEach((column) => {
+        transformedSensorData.data[column] = sensorDataArray.map((data) => ({
+          value: data[column],
+          createdat: data.createdat || "",
+        }));
       });
+    return transformedSensorData.data as {
+      temperature: { value: number; createdat: Date }[];
+      pressure: { value: number; createdat: Date }[];
+      humidity: { value: number; createdat: Date }[];
+      gas: { value: number; createdat: Date }[];
+      soil: { value: number; createdat: Date }[];
+    };
   }),
 
   getData: publicProcedure.query(({ ctx }) => {
