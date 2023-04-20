@@ -9,10 +9,14 @@
     "lint": "next lint",
     "start": "next start"
   },
+  "prisma": {
+    "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
+  },
   "dependencies": {
     "@heroicons/react": "^2.0.17",
     "@prisma/client": "^4.11.0",
     "@tanstack/react-query": "^4.28.0",
+    "@tanstack/react-query-devtools": "^4.29.3",
     "@trpc/client": "^10.18.0",
     "@trpc/next": "^10.18.0",
     "@trpc/react-query": "^10.18.0",
@@ -23,9 +27,11 @@
     "react-dom": "18.2.0",
     "react-map-gl": "^7.0.23",
     "superjson": "1.12.2",
+    "ts-node": "^10.9.1",
     "zod": "^3.21.4"
   },
   "devDependencies": {
+    "@faker-js/faker": "^7.6.0",
     "@types/eslint": "^8.21.3",
     "@types/mapbox-gl": "^2.7.10",
     "@types/node": "^18.15.5",

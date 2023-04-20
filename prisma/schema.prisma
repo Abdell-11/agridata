@@ -19,4 +19,6 @@ model sensordata {
   gas         Float?
   soil        Float?
   createdat   DateTime @default(now())
+  latitude    Float
+  longitude   Float
 }
