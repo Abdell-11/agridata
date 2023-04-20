@@ -1,74 +1,74 @@
 [
-  {
-    "city": "Node 1",
-    "population": "8,175,133",
-    "image": "http://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Above_Gotham.jpg/240px-Above_Gotham.jpg",
-    "state": "New York",
-    "latitude": 33.544402,
-    "longitude": -5.105036
-  },
-  {
-    "city": "Node 2",
-    "population": "3,792,621",
-    "image": "http://upload.wikimedia.org/wikipedia/commons/thumb/5/57/LA_Skyline_Mountains2.jpg/240px-LA_Skyline_Mountains2.jpg",
-    "state": "California",
-    "latitude": 33.541482, 
-    "longitude": -5.110765
-  },
-  {
-    "city": "Node 3",
-    "population": "3,792,621",
-    "image": "http://upload.wikimedia.org/wikipedia/commons/thumb/5/57/LA_Skyline_Mountains2.jpg/240px-LA_Skyline_Mountains2.jpg",
-    "state": "California",
-    "latitude": 33.544490,
-    "longitude": -5.107634
-  },
-  {
-    "city": "Node 4",
-    "population": "3,792,621",
-    "image": "http://upload.wikimedia.org/wikipedia/commons/thumb/5/57/LA_Skyline_Mountains2.jpg/240px-LA_Skyline_Mountains2.jpg",
-    "state": "California",
-    "latitude": 33.543640,
-    "longitude": -5.109508
-  },
-  {
-    "city": "Node 5",
-    "population": "3,792,621",
-    "image": "http://upload.wikimedia.org/wikipedia/commons/thumb/5/57/LA_Skyline_Mountains2.jpg/240px-LA_Skyline_Mountains2.jpg",
-    "state": "California",
-    "latitude": 33.543070,
-    "longitude": -5.110606 
-  },
-  {
-    "city": "Node 6",
-    "population": "3,792,621",
-    "image": "http://upload.wikimedia.org/wikipedia/commons/thumb/5/57/LA_Skyline_Mountains2.jpg/240px-LA_Skyline_Mountains2.jpg",
-    "state": "California",
-    "latitude": 33.542549, 
-    "longitude": -5.111071
-  },
-  {
-    "city": "Node 7",
-    "population": "3,792,621",
-    "image": "http://upload.wikimedia.org/wikipedia/commons/thumb/5/57/LA_Skyline_Mountains2.jpg/240px-LA_Skyline_Mountains2.jpg",
-    "state": "California",
-    "latitude": 33.543831, 
-    "longitude": -5.110422
-  },
-  {
-    "city": "Node 8",
-    "population": "3,792,621",
-    "image": "http://upload.wikimedia.org/wikipedia/commons/thumb/5/57/LA_Skyline_Mountains2.jpg/240px-LA_Skyline_Mountains2.jpg",
-    "state": "California",
-    "latitude": 33.544738,
-    "longitude": -5.109502
-  },
-  {
-    "city": "Node 9",
-    "population": "3,792,621",
-    "image": "http://upload.wikimedia.org/wikipedia/commons/thumb/5/57/LA_Skyline_Mountains2.jpg/240px-LA_Skyline_Mountains2.jpg",
-    "state": "California",
-    "latitude": 33.545124,
-    "longitude": -5.106249
-  }
-]
+    {
+      "city": "Node 1",
+      "population": "8,175,133",
+      "image": "http://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Above_Gotham.jpg/240px-Above_Gotham.jpg",
+      "state": "New York",
+      "latitude": 33.544402,
+      "longitude": -5.105036
+    },
+    {
+      "city": "Node 2",
+      "population": "3,792,621",
+      "image": "http://upload.wikimedia.org/wikipedia/commons/thumb/5/57/LA_Skyline_Mountains2.jpg/240px-LA_Skyline_Mountains2.jpg",
+      "state": "California",
+      "latitude": 33.541482, 
+      "longitude": -5.110765
+    },
+    {
+      "city": "Node 3",
+      "population": "3,792,621",
+      "image": "http://upload.wikimedia.org/wikipedia/commons/thumb/5/57/LA_Skyline_Mountains2.jpg/240px-LA_Skyline_Mountains2.jpg",
+      "state": "California",
+      "latitude": 33.544490,
+      "longitude": -5.107634
+    },
+    {
+      "city": "Node 4",
+      "population": "3,792,621",
+      "image": "http://upload.wikimedia.org/wikipedia/commons/thumb/5/57/LA_Skyline_Mountains2.jpg/240px-LA_Skyline_Mountains2.jpg",
+      "state": "California",
+      "latitude": 33.543640,
+      "longitude": -5.109508
+    },
+    {
+      "city": "Node 5",
+      "population": "3,792,621",
+      "image": "http://upload.wikimedia.org/wikipedia/commons/thumb/5/57/LA_Skyline_Mountains2.jpg/240px-LA_Skyline_Mountains2.jpg",
+      "state": "California",
+      "latitude": 33.543070,
+      "longitude": -5.110606 
+    },
+    {
+      "city": "Node 6",
+      "population": "3,792,621",
+      "image": "http://upload.wikimedia.org/wikipedia/commons/thumb/5/57/LA_Skyline_Mountains2.jpg/240px-LA_Skyline_Mountains2.jpg",
+      "state": "California",
+      "latitude": 33.542549, 
+      "longitude": -5.111071
+    },
+    {
+      "city": "Node 7",
+      "population": "3,792,621",
+      "image": "http://upload.wikimedia.org/wikipedia/commons/thumb/5/57/LA_Skyline_Mountains2.jpg/240px-LA_Skyline_Mountains2.jpg",
+      "state": "California",
+      "latitude": 33.543831, 
+      "longitude": -5.110422
+    },
+    {
+      "city": "Node 8",
+      "population": "3,792,621",
+      "image": "http://upload.wikimedia.org/wikipedia/commons/thumb/5/57/LA_Skyline_Mountains2.jpg/240px-LA_Skyline_Mountains2.jpg",
+      "state": "California",
+      "latitude": 33.544738,
+      "longitude": -5.109502
+    },
+    {
+      "city": "Node 9",
+      "population": "3,792,621",
+      "image": "http://upload.wikimedia.org/wikipedia/commons/thumb/5/57/LA_Skyline_Mountains2.jpg/240px-LA_Skyline_Mountains2.jpg",
+      "state": "California",
+      "latitude": 33.545124,
+      "longitude": -5.106249
+    }
+  ]

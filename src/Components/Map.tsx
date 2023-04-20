@@ -20,6 +20,26 @@ const TestMap = () => {
   const [popupInfo, setPopupInfo] = useState<sensorData | undefined>();
   const { data: AllData } = api.sensorData.getLatestDataPerNode.useQuery();
   const { data: NodeData, mutateAsync: fetchById } = api.sensorData.getLatestDataByNode.useMutation();
+  function getUnit(name: string): string {
+    switch (name) {
+      case 'Node ID':
+        return '';
+      case 'Temperature':
+        return '°C';
+      case 'Humidity':
+        return '%';
+      case 'Pressure':
+        return 'hPa';
+      case 'Soil Moisture':
+        return '%';
+      case 'Gas':
+        return 'ppm';
+      case 'Last Update':
+        return '';
+      default:
+        return '';
+    }
+  }
 
   const pins = useMemo(
     () =>
@@ -34,7 +54,6 @@ const TestMap = () => {
             // with `closeOnClick: true`
             e.originalEvent.stopPropagation();
             setPopupInfo(city);
-            console.log(index);
           }}
         >
           <Pin />
@@ -115,18 +134,21 @@ const TestMap = () => {
               {
                 "name": "Gas",
                 "value": popupInfo.gas
-              } 
-            ]
-            .filter(item => !isNaN(item.value))
+              },
+              {
+                "name": "Last Update",
+                "value": new Date(popupInfo.createdat).toLocaleString()
+              }
+            ] 
+            .filter(item => !isNaN(item.value) || item.name === 'Last Update')
             .map((item, index) => (
               <p
                 key={index}
               >
-                {item.name} : {item.value}
+                <strong>{item.name} :</strong> {item.value} {getUnit(item.name)}
               </p>
             ))
           }
-          {/* <img width="100%" src={popupInfo.image} /> */}
         </Popup>
       )}
     </Map>
