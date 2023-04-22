@@ -1,5 +1,4 @@
 import { useRouter } from "next/router";
-import { api } from "~/utils/api";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -12,6 +11,8 @@ import {
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 import { faker } from "@faker-js/faker";
+
+
 
 ChartJS.register(
   CategoryScale,
@@ -31,27 +32,22 @@ export const options = {
     },
     title: {
       display: true,
-      text: 'Chart.js Line Chart',
+      text: '',
     },
   },
 };
 
-const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
 
 export const data = {
   labels,
   datasets: [
     {
       label: 'Dataset 1',
-      data: labels.map(() => faker.datatype.number({ min: -1000, max: 1000 })),
+      data: labels.map(() => faker.datatype.number({ min: 0, max: 25 })),
       borderColor: 'rgb(255, 99, 132)',
       backgroundColor: 'rgba(255, 99, 132, 0.5)',
-    },
-    {
-      label: 'Dataset 2',
-      data: labels.map(() => faker.datatype.number({ min: -1000, max: 1000 })),
-      borderColor: 'rgb(53, 162, 235)',
-      backgroundColor: 'rgba(53, 162, 235, 0.5)',
     },
   ],
 };
@@ -61,8 +57,8 @@ const SensorDataPage = () => {
 
   return (
     <div>
-      <h1>{dataName} Data</h1>
-      <Line options={options} data={data} />
+      <h1 className="text-center font-bold capitalize">{dataName}</h1>
+      <Line data={data} options={options} />
     </div>
   );
 };
