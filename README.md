@@ -1,28 +1,42 @@
-# Create T3 App
+# AgriData
+This is a capstone project that is aimed at developing an agricultural sensor network that can collect data on soil moisture, temperature, humidity, and other environmental factors to help farmers optimize their crop yields. The network consists of multiple wireless sensors nodes that communicate with a central data hub, where the data is processed and analyzed to provide actionable insights to farmers.
 
-This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
+## Table of Contents
 
-## What's next? How do I make an app with this?
+ - **Features** 
+ - **Installation** 
+ - **Usage**
 
-We try to keep this project as simple as possible, so you can start with just the scaffolding we set up for you, and add additional things later when they become necessary.
+## Features
 
-If you are not familiar with the different technologies used in this project, please refer to the respective docs. If you still are in the wind, please join our [Discord](https://t3.gg/discord) and ask for help.
+ - Collects data on air temperature, air humidity, atmospheric pressure, gas levels, and soil moisture. 
+  - Sends data wirelessly to a central data hub for processing and analysis     
+   - Provides actionable insights to farmers to help optimize crop yields
+   - Scalable to support a large number of sensors across a wide area
 
-- [Next.js](https://nextjs.org)
-- [NextAuth.js](https://next-auth.js.org)
-- [Prisma](https://prisma.io)
-- [Tailwind CSS](https://tailwindcss.com)
-- [tRPC](https://trpc.io)
+## Installation
 
-## Learn More
+To install the system, you will need the following hardware components:
 
-To learn more about the [T3 Stack](https://create.t3.gg/), take a look at the following resources:
+ - Wireless sensors nodes 
+ - Central data hub 
+ - Power supplies
 
-- [Documentation](https://create.t3.gg/)
-- [Learn the T3 Stack](https://create.t3.gg/en/faq#what-learning-resources-are-currently-available) — Check out these awesome tutorials
+To install the software components, follow these steps:
 
-You can check out the [create-t3-app GitHub repository](https://github.com/t3-oss/create-t3-app) — your feedback and contributions are welcome!
+ 1. Clone this repository to your local machine. 
+ 2. Install any necessary dependencies using **npm install**. 
+ 3. Configure the system to work with your specific hardware components.
+ 4. Navigate to the "Frontend" directory and run the commmand **npm run dev**.
+ 5. Navigate to the "Backend" directory and run the commmand **node app.js**.
+ 6. Upload the code to the boards throught the **Arduino IDE**
 
-## How do I deploy this?
+## Usage
 
-Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
+To use the system, follow these steps:
+
+ 1. Install the system as described in the Installation section. 
+ 2. Power on the sensors nodes and the central data hub. 
+ 3. Wait for the nodes to establish wireless communication with the hub. 
+ 4. Monitor the data collected by the sensors in real-time using the system's dashboard.
+ 5. Use the insights provided by the system to optimize crop yields.
